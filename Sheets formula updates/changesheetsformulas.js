@@ -3,6 +3,7 @@ function addColumn() {
   var updateSheet = [{ name: "Add Column", functionName: "addColumn" }];
   ss.addMenu("Add Column", addColumn);
 }
+
 //insert column to existing tab
 function addColumn() {
   var source = SpreadsheetApp.getActiveSpreadsheet();
@@ -16,6 +17,7 @@ function addColumn() {
   var folderFiles = sourceFolder.getFiles();
   var thisFile;
 
+  // use this to update files in the current folder
   while (folderFiles.hasNext()) {
     thisFile = folderFiles.next();
     if (thisFile.getName() !== sourceFile.getName()) {

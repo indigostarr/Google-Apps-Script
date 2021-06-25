@@ -1,15 +1,15 @@
 "use strict";
 
 const locationToCalculateFrom = document.querySelector(".city");
-const lyftLocationCalc = document.querySelector(".lyft-loc");
-// const selectedLyftLoc = document.querySelector(".lyft-loc");
+const baseLocationCalc = document.querySelector(".base-loc");
+// const selectedbaseLoc = document.querySelector(".base-loc");
 
 console.log(locationToCalculateFrom);
 let shortestDistance = 3000;
 let cityToCalculateFrom = "";
-let closestLyftLoc = "";
+let closestbaseLoc = "";
 
-let lyftLoc = {
+let baseLoc = {
   "New York": {
     Albany: [42.63378, -73.76322],
     Bronx: [40.82077, -73.92387],
@@ -20,7 +20,7 @@ let lyftLoc = {
     Frederick: [39.44605, -77.33495],
   },
 };
-// console.log(lyftLoc.Maryland);
+// console.log(baseLoc.Maryland);
 
 let currentCity = {
   "New York": {
@@ -50,16 +50,16 @@ const cityMatch = function (currState, matchState) {
       // console.log(matchCity);
       if (distanceFromCity < shortestDistance) {
         shortestDistance = distanceFromCity;
-        closestLyftLoc = loc;
+        closestbaseLoc = loc;
       }
     }
     locationToCalculateFrom.innerHTML += `<br>City: ${cityToCalculateFrom} | Distance is ${Math.round(
       shortestDistance
     )}km\b`;
-    lyftLocationCalc.innerHTML += `<br>Closest Lyft Loc: ${closestLyftLoc}\b`;
+    baseLocationCalc.innerHTML += `<br>Closest base Loc: ${closestbaseLoc}\b`;
 
     // locationToCalculateFrom.innerHTML = cityToCalculateFrom;
-    // selectedLyftLoc.innerHTML = closestLyftLoc;
+    // selectedbaseLoc.innerHTML = closestbaseLoc;
   }
 };
 
@@ -91,7 +91,7 @@ function toRad(Value) {
 function availCities() {
   for (let state in currentCity) {
     let currState = currentCity[state];
-    let matchState = lyftLoc[state];
+    let matchState = baseLoc[state];
     cityMatch(currState, matchState);
   }
 }
@@ -125,6 +125,6 @@ Excel.run(function (context) {
 
 // database of arrays of values
 
-// for each lyft location array
+// for each base location array
 // console.log(currentLoc.Sloansville);
-// loop through database of lyft loc
+// loop through database of base loc
